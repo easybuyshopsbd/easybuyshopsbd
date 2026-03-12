@@ -11,49 +11,44 @@
         body { font-family: 'Hind Siliguri', sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
         .main-wrapper { max-width: 600px; margin: auto; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
         
-        /* Header */
         header { text-align: center; padding: 20px; border-bottom: 2px solid #eee; }
         .logo { font-size: 30px; font-weight: 800; color: var(--primary); }
         .logo span { color: var(--secondary); }
 
-        /* Headline */
         .headline { padding: 20px; text-align: center; font-size: 22px; font-weight: 700; line-height: 1.4; color: #111; }
 
-        /* Image Slider */
-        .main-carousel { margin-bottom: 20px; }
-        .carousel-cell { width: 100%; height: auto; margin-right: 10px; }
-        .carousel-cell img { width: 100%; display: block; }
+        /* Carousel Image Fix */
+        .main-carousel { margin-bottom: 20px; background: #eee; }
+        .carousel-cell { width: 100%; height: auto; min-height: 300px; margin-right: 10px; display: flex; align-items: center; justify-content: center;}
+        .carousel-cell img { width: 100%; height: auto; display: block; object-fit: cover; }
 
-        /* Section Title */
         .section-title { background: var(--primary); color: #fff; padding: 10px; text-align: center; font-size: 20px; margin-top: 20px; }
 
-        /* Video Section */
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px; border-radius: 10px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* Detailed Benefits */
+        .timer-box { background: #fff3e0; margin: 20px; padding: 15px; border-radius: 10px; border: 2px dashed var(--secondary); text-align: center; }
+        .timer-label { font-size: 18px; font-weight: 700; color: #e65100; margin-bottom: 10px; }
+        #countdown { font-size: 35px; font-weight: 800; color: #d32f2f; font-family: sans-serif; }
+
         .benefits-grid { padding: 20px; background: #fff; }
         .benefit-card { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 5px solid var(--primary); }
         .benefit-card h4 { margin: 0 0 5px 0; color: var(--primary); }
 
-        /* Table */
         .spec-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .spec-table td { border: 1px solid #ddd; padding: 10px; font-size: 14px; }
+        .spec-table td { border: 1px solid #ddd; padding: 10px; font-size: 16px; }
 
-        /* Checkout Form */
         .checkout-area { padding: 20px; background: #fff; border-top: 5px solid var(--secondary); }
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: 600; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; font-size: 16px; box-sizing: border-box;}
         
         .price-summary { background: #eee; padding: 15px; border-radius: 5px; margin: 15px 0; }
         .row { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 5px; }
 
-        .confirm-btn { background: #28a745; color: #fff; border: none; width: 100%; padding: 18px; font-size: 20px; font-weight: 700; border-radius: 5px; cursor: pointer; }
-
-        /* Success Message Overlay */
+        .confirm-btn { background: #28a745; color: #fff; border: none; width: 100%; padding: 18px; font-size: 22px; font-weight: 700; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        
         #success-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 9999; text-align: center; padding-top: 100px; }
-        .success-icon { font-size: 80px; color: #28a745; }
     </style>
 </head>
 <body>
@@ -63,15 +58,20 @@
 
     <div class="headline">আপনার সোনামণির জ্বর বা প্রচণ্ড গরমে তাৎক্ষণিক আরাম পেতে ব্যবহার করুন এই ম্যাজিক কুলিং প্যাচ!</div>
 
-    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": true }'>
-        <div class="carousel-cell"><img src="https://via.placeholder.com/600x400?text=Image+1"></div>
-        <div class="carousel-cell"><img src="https://via.placeholder.com/600x400?text=Image+2"></div>
-        <div class="carousel-cell"><img src="https://via.placeholder.com/600x400?text=Image+3"></div>
+    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 3000, "prevNextButtons": false, "adaptiveHeight": true }'>
+        <div class="carousel-cell"><img src="https://i.ibb.co/PdXHxsB/file-00000000ca9472089ba2ef0095d8a1aa.png" alt="Product Image 1"></div>
+        <div class="carousel-cell"><img src="https://i.ibb.co/4rz5BB4/file-00000000f0507208a860e0727979ae1b.png" alt="Product Image 2"></div>
+        <div class="carousel-cell"><img src="https://i.ibb.co/1f31kjGq/file-00000000bf3472089d94f78ac7b02f06.png" alt="Product Image 3"></div>
+    </div>
+
+    <div class="timer-box">
+        <div class="timer-label">🔥 সীমিত সময়ের অফার! শেষ হতে বাকি:</div>
+        <div id="countdown">12:00:00</div>
     </div>
 
     <div class="section-title">পণ্যটি কিভাবে কাজ করে ভিডিওতে দেখুন</div>
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <div class="section-title">কেন এটি প্রতিটি ঘরে থাকা প্রয়োজন?</div>
@@ -82,30 +82,30 @@
         </div>
         <div class="benefit-card">
             <h4>✅ বহুমুখী ব্যবহার</h4>
-            <p>শুধু জ্বর নয়, মাথা ব্যথা, মাংসপেশির ব্যথা বা প্রচণ্ড রোদে ক্লান্তি দূর করতে এটি দারুণ কার্যকর।</p>
+            <p>শুধু জ্বর নয়, মাথা ব্যথা, মাংসপেশির ব্যথা বা প্রচণ্ড গরমে ক্লান্তি দূর করতে এটি দারুণ কার্যকর।</p>
         </div>
         <div class="benefit-card">
             <h4>✅ নিরাপদ ও আরামদায়ক</h4>
-            <p>কোনো ওষুধ বা কেমিক্যাল ছাড়াই প্রাকৃতিক কুলিং জেল ব্যবহার করা হয়েছে, যা ত্বকের জন্য সম্পূর্ণ নিরাপদ।</p>
+            <p>কোনো ওষুধ ছাড়াই প্রাকৃতিক কুলিং জেল ব্যবহার করা হয়েছে, যা ত্বকের জন্য সম্পূর্ণ নিরাপদ।</p>
         </div>
         <div class="benefit-card">
-            <h4>✅ ইজি টু ইউজ</h4>
-            <p>প্যাকেট থেকে খুলে সরাসরি কপালে বা শরীরের যেকোনো জায়গায় স্টিকারের মতো লাগিয়ে দেওয়া যায়।</p>
+            <h4>✅ কারা ব্যবহার করতে পারবে?</h4>
+            <p>এটি ছোট বাচ্চা থেকে শুরু করে বয়স্ক মানুষ পর্যন্ত যে কেউ জ্বর, মাথাব্যথা বা গরমে প্রশান্তির জন্য ব্যবহার করতে পারবেন।</p>
         </div>
     </div>
 
-    <div class="section-title">পণ্যের বিস্তারিত বিবরণ</div>
+    <div class="section-title">অফার মূল্য ও বিবরণ</div>
     <div style="padding: 20px;">
         <table class="spec-table">
             <tr><td><b>পণ্যের নাম:</b></td><td>কুলিং প্যাচ সেট (৬ পিস)</td></tr>
-            <tr><td><b>উপাদান:</b></td><td>হাইড্রোফিলিক জেল, মিন্ট এক্সট্রাক্ট</td></tr>
-            <tr><td><b>আয়ুষ্কাল:</b></td><td>প্রতিটি প্যাচ ৮ ঘণ্টা পর্যন্ত কার্যকর</td></tr>
-            <tr><td><b>অফার মূল্য:</b></td><td>৪৯৯ টাকা (পূর্বমূল্য ৭৯৯ টাকা)</td></tr>
+            <tr><td><b>পূর্ব মূল্য:</b></td><td><del>৮০০ টাকা</del></td></tr>
+            <tr><td><b>বর্তমান অফার মূল্য:</b></td><td><b style="color:red; font-size: 20px;">৪৫০ টাকা</b></td></tr>
+            <tr><td><b>কার্যকারিতা:</b></td><td>প্রতিটি প্যাচ ৮ ঘণ্টা পর্যন্ত</td></tr>
         </table>
     </div>
 
     <div class="checkout-area" id="order-form">
-        <h3 style="text-align: center;">অর্ডার কনফার্ম করতে তথ্য দিন</h3>
+        <h3 style="text-align: center;">অর্ডার কনফার্ম করতে নিচের ফরমটি পূরণ করুন</h3>
         <form id="googleSheetForm">
             <div class="form-group">
                 <label>আপনার নাম *</label>
@@ -128,11 +128,11 @@
             </div>
 
             <div class="price-summary">
-                <div class="row"><span>প্রোডাক্টের দাম:</span> <span>৪৯৯ টাকা</span></div>
+                <div class="row"><span>প্রোডাক্টের দাম:</span> <span>৪৫০ টাকা</span></div>
                 <div class="row"><span>ডেলিভারি চার্জ:</span> <span id="chargeDisp">৮০ টাকা</span></div>
                 <hr>
-                <div class="row" style="color:var(--primary); font-size: 18px;">
-                    <span>সর্বমোট:</span> <span id="totalDisp">৫৭৯ টাকা</span>
+                <div class="row" style="color:var(--primary); font-size: 20px;">
+                    <span>সর্বমোট:</span> <span id="totalDisp">৫৩০ টাকা</span>
                 </div>
             </div>
 
@@ -146,19 +146,46 @@
 </div>
 
 <div id="success-page">
-    <div class="success-icon">✔</div>
-    <h1>ধন্যবাদ! আপনার অর্ডারটি পেন্ডিং আছে।</h1>
-    <p style="padding: 0 20px; font-size: 18px;">আমাদের একজন প্রতিনিধি খুব শীঘ্রই আপনার নাম্বারে কল করে অর্ডারটি কনফার্ম করবেন। অনুগ্রহ করে কলটি রিসিভ করার জন্য অনুরোধ করা হলো।</p>
+    <div style="font-size: 80px; color: #28a745; margin-top: 100px;">✔</div>
+    <h1>ধন্যবাদ! আপনার অর্ডারটি গ্রহণ করা হয়েছে।</h1>
+    <p style="padding: 0 20px; font-size: 18px;">আমাদের প্রতিনিধি শীঘ্রই যোগাযোগ করবেন।</p>
     <br>
     <button onclick="location.reload()" style="padding: 10px 20px; cursor: pointer;">হোম পেজে ফিরুন</button>
 </div>
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script>
+    // 12 Hours Countdown
+    function startTimer(duration, display) {
+        var timer = duration, hours, minutes, seconds;
+        setInterval(function () {
+            hours = parseInt(timer / 3600, 10);
+            minutes = parseInt((timer % 3600) / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = hours + ":" + minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration; 
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var twelveHours = 60 * 60 * 12;
+        var display = document.querySelector('#countdown');
+        startTimer(twelveHours, display);
+    };
+
+    // Price Update
     const shippingSelect = document.getElementById('shippingSelect');
     const chargeDisp = document.getElementById('chargeDisp');
     const totalDisp = document.getElementById('totalDisp');
-    const productPrice = 499;
+    const productPrice = 450;
 
     shippingSelect.addEventListener('change', function() {
         const charge = parseInt(this.value);
@@ -166,7 +193,7 @@
         totalDisp.innerText = (productPrice + charge) + ' টাকা';
     });
 
-    // গুগল শিটে ডাটা পাঠানো এবং পেজ পরিবর্তন লজিক
+    // Form Action
     const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
     const form = document.getElementById('googleSheetForm');
     const btn = document.getElementById('submitBtn');
@@ -176,15 +203,15 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
         btn.disabled = true;
-        btn.innerText = "অর্ডার সাবমিট হচ্ছে...";
+        btn.innerText = "অর্ডার প্রসেস হচ্ছে...";
         
         let finalData = new FormData(form);
         finalData.append('Total_Amount', (productPrice + parseInt(shippingSelect.value)));
 
         fetch(scriptURL, { method: 'POST', body: finalData})
             .then(response => {
-                mainContent.style.display = 'none'; // মেইন পেজ লুকিয়ে ফেলা
-                successPage.style.display = 'block'; // ধন্যবাদ পেজ দেখানো
+                mainContent.style.display = 'none';
+                successPage.style.display = 'block';
                 window.scrollTo(0,0);
             })
             .catch(error => {
