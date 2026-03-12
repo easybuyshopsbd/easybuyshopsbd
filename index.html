@@ -3,46 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Buy - ম্যাজিক কুলিং প্যাচ</title>
+    <title>Easy Buy Shop BD - ম্যাজিক কুলিং প্যাচ</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <style>
-        :root { --primary: #00a884; --secondary: #ff9800; --dark: #333; }
+        :root { --primary: #00a884; --secondary: #ff9800; --dark: #333; --bright-red: #FF0000; --bright-yellow: #FFD700; }
         body { font-family: 'Hind Siliguri', sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
         .main-wrapper { max-width: 600px; margin: auto; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
         
-        header { text-align: center; padding: 20px; border-bottom: 2px solid #eee; }
-        .logo { font-size: 30px; font-weight: 800; color: var(--primary); }
-        .logo span { color: var(--secondary); }
+        header { text-align: center; padding: 20px; border-bottom: 2px solid #eee; background: #fff; }
+        .logo { font-size: 32px; font-weight: 900; color: var(--bright-red); font-family: 'Arial Black', sans-serif; text-transform: uppercase; }
+        .logo span { color: var(--bright-yellow); text-shadow: 1px 1px 2px #000; }
 
         .headline { padding: 20px; text-align: center; font-size: 22px; font-weight: 700; line-height: 1.4; color: #111; }
 
-        /* Carousel Image Fix */
         .main-carousel { margin-bottom: 20px; background: #eee; }
         .carousel-cell { width: 100%; height: auto; min-height: 300px; margin-right: 10px; display: flex; align-items: center; justify-content: center;}
         .carousel-cell img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+        .timer-box { background: #fff3e0; margin: 20px; padding: 15px; border-radius: 10px; border: 2px dashed var(--secondary); text-align: center; }
+        .timer-label { font-size: 18px; font-weight: 700; color: #e65100; margin-bottom: 5px; }
+        .price-info { font-size: 16px; margin-bottom: 10px; font-weight: bold; }
+        #countdown { font-size: 35px; font-weight: 800; color: #d32f2f; font-family: sans-serif; }
+
+        .order-nav-btn { background: #ff5722; color: #fff; border: none; padding: 12px 25px; font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer; margin: 10px auto; display: block; text-decoration: none; width: fit-content; }
 
         .section-title { background: var(--primary); color: #fff; padding: 10px; text-align: center; font-size: 20px; margin-top: 20px; }
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px; border-radius: 10px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .timer-box { background: #fff3e0; margin: 20px; padding: 15px; border-radius: 10px; border: 2px dashed var(--secondary); text-align: center; }
-        .timer-label { font-size: 18px; font-weight: 700; color: #e65100; margin-bottom: 10px; }
-        #countdown { font-size: 35px; font-weight: 800; color: #d32f2f; font-family: sans-serif; }
-
         .benefits-grid { padding: 20px; background: #fff; }
         .benefit-card { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 5px solid var(--primary); }
         .benefit-card h4 { margin: 0 0 5px 0; color: var(--primary); }
 
-        .spec-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .spec-table td { border: 1px solid #ddd; padding: 10px; font-size: 16px; }
-
         .checkout-area { padding: 20px; background: #fff; border-top: 5px solid var(--secondary); }
         .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 17px; }
         input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; font-size: 16px; box-sizing: border-box;}
         
+        /* Package Selection UI */
+        .package-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+        .package-item { border: 1px solid #ddd; padding: 12px; border-radius: 8px; display: flex; align-items: center; cursor: pointer; background: #fdfdfd; }
+        .package-item.selected { border: 2px solid var(--primary); background: #e8f5e9; }
+        .package-item input { width: 20px; margin-right: 15px; }
+        .package-details { flex-grow: 1; }
+        .p-name { font-weight: 700; font-size: 16px; display: block; }
+        .p-price { font-size: 15px; }
+        .old-p { text-decoration: line-through; color: #999; margin-right: 8px; }
+        .new-p { color: #d32f2f; font-weight: 700; }
+
         .price-summary { background: #eee; padding: 15px; border-radius: 5px; margin: 15px 0; }
         .row { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 5px; }
 
@@ -54,24 +64,27 @@
 <body>
 
 <div class="main-wrapper" id="main-content">
-    <header><div class="logo">Easy<span>Buy</span></div></header>
+    <header><div class="logo">Easy<span>Buy Shop BD</span></div></header>
 
     <div class="headline">আপনার সোনামণির জ্বর বা প্রচণ্ড গরমে তাৎক্ষণিক আরাম পেতে ব্যবহার করুন এই ম্যাজিক কুলিং প্যাচ!</div>
 
     <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 3000, "prevNextButtons": false, "adaptiveHeight": true }'>
-        <div class="carousel-cell"><img src="https://i.ibb.co/PdXHxsB/file-00000000ca9472089ba2ef0095d8a1aa.png" alt="Product Image 1"></div>
-        <div class="carousel-cell"><img src="https://i.ibb.co/4rz5BB4/file-00000000f0507208a860e0727979ae1b.png" alt="Product Image 2"></div>
-        <div class="carousel-cell"><img src="https://i.ibb.co/1f31kjGq/file-00000000bf3472089d94f78ac7b02f06.png" alt="Product Image 3"></div>
+        <div class="carousel-cell"><img src="https://i.ibb.co/PdXHxsB/file-00000000ca9472089ba2ef0095d8a1aa.png" alt="Product 1"></div>
+        <div class="carousel-cell"><img src="https://i.ibb.co/4rz5BB4/file-00000000f0507208a860e0727979ae1b.png" alt="Product 2"></div>
+        <div class="carousel-cell"><img src="https://i.ibb.co/1f31kjGq/file-00000000bf3472089d94f78ac7b02f06.png" alt="Product 3"></div>
     </div>
 
     <div class="timer-box">
         <div class="timer-label">🔥 সীমিত সময়ের অফার! শেষ হতে বাকি:</div>
+        <div class="price-info">৬ টি পূর্বের মূল্য <del>৮০০</del> টাকা। অফার মূল্য ৪৫০ টাকা</div>
         <div id="countdown">12:00:00</div>
     </div>
 
-    <div class="section-title">পণ্যটি কিভাবে কাজ করে ভিডিওতে দেখুন</div>
+    <button class="order-nav-btn" onclick="document.getElementById('order-form').scrollIntoView({behavior: 'smooth'})">এখনই অর্ডার করুন</button>
+
+    <div class="section-title">পণ্যটি বিস্তারিত ভিডিওতে দেখুন</div>
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <div class="section-title">কেন এটি প্রতিটি ঘরে থাকা প্রয়োজন?</div>
@@ -94,18 +107,10 @@
         </div>
     </div>
 
-    <div class="section-title">অফার মূল্য ও বিবরণ</div>
-    <div style="padding: 20px;">
-        <table class="spec-table">
-            <tr><td><b>পণ্যের নাম:</b></td><td>কুলিং প্যাচ সেট (৬ পিস)</td></tr>
-            <tr><td><b>পূর্ব মূল্য:</b></td><td><del>৮০০ টাকা</del></td></tr>
-            <tr><td><b>বর্তমান অফার মূল্য:</b></td><td><b style="color:red; font-size: 20px;">৪৫০ টাকা</b></td></tr>
-            <tr><td><b>কার্যকারিতা:</b></td><td>প্রতিটি প্যাচ ৮ ঘণ্টা পর্যন্ত</td></tr>
-        </table>
-    </div>
-
     <div class="checkout-area" id="order-form">
-        <h3 style="text-align: center;">অর্ডার কনফার্ম করতে নিচের ফরমটি পূরণ করুন</h3>
+        <h3 style="text-align: center; color: #d32f2f;">অর্ডার কনফার্ম করতে নিচের ফরমটি পূরণ করুন</h3>
+        <p style="text-align:center; font-weight:bold;">🚛 সম্পূর্ণ ক্যাশ অন ডেলিভারি</p>
+        
         <form id="googleSheetForm">
             <div class="form-group">
                 <label>আপনার নাম *</label>
@@ -119,6 +124,34 @@
                 <label>সম্পূর্ণ ঠিকানা *</label>
                 <input type="text" name="Address" required placeholder="গ্রাম/রাস্তা, থানা, জেলা">
             </div>
+
+            <div class="form-group">
+                <label>পছন্দের প্যাকেজ সিলেক্ট করুন *</label>
+                <div class="package-list">
+                    <div class="package-item selected" onclick="selectPkg(this, 450)">
+                        <input type="radio" name="pkg_choice" checked>
+                        <div class="package-details">
+                            <span class="p-name">৬ পিস ম্যাজিক কুলিং প্যাচ</span>
+                            <span class="p-price"><span class="old-p">৮০০</span> <span class="new-p">৪৫০ টাকা</span></span>
+                        </div>
+                    </div>
+                    <div class="package-item" onclick="selectPkg(this, 900)">
+                        <input type="radio" name="pkg_choice">
+                        <div class="package-details">
+                            <span class="p-name">১২ পিস + ১ পিস ফ্রি</span>
+                            <span class="p-price"><span class="old-p">১৬০০</span> <span class="new-p">৯০০ টাকা</span></span>
+                        </div>
+                    </div>
+                    <div class="package-item" onclick="selectPkg(this, 1350)">
+                        <input type="radio" name="pkg_choice">
+                        <div class="package-details">
+                            <span class="p-name">১৮ পিস + ২ পিস ফ্রি</span>
+                            <span class="p-price"><span class="old-p">২৪০০</span> <span class="new-p">১৩৫০ টাকা</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label>ডেলিভারি এরিয়া *</label>
                 <select name="Shipping" id="shippingSelect">
@@ -128,7 +161,7 @@
             </div>
 
             <div class="price-summary">
-                <div class="row"><span>প্রোডাক্টের দাম:</span> <span>৪৫০ টাকা</span></div>
+                <div class="row"><span>প্রোডাক্টের দাম:</span> <span id="prodPriceDisp">৪৫০ টাকা</span></div>
                 <div class="row"><span>ডেলিভারি চার্জ:</span> <span id="chargeDisp">৮০ টাকা</span></div>
                 <hr>
                 <div class="row" style="color:var(--primary); font-size: 20px;">
@@ -141,7 +174,7 @@
     </div>
 
     <footer style="padding: 30px; text-align: center; background: #333; color: #fff;">
-        Easy Buy | Helpline: 017********
+        Easy Buy Shop BD | Helpline: 017********
     </footer>
 </div>
 
@@ -162,43 +195,49 @@
             hours = parseInt(timer / 3600, 10);
             minutes = parseInt((timer % 3600) / 60, 10);
             seconds = parseInt(timer % 60, 10);
-
             hours = hours < 10 ? "0" + hours : hours;
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
-
             display.textContent = hours + ":" + minutes + ":" + seconds;
-
-            if (--timer < 0) {
-                timer = duration; 
-            }
+            if (--timer < 0) timer = duration; 
         }, 1000);
     }
 
     window.onload = function () {
-        var twelveHours = 60 * 60 * 12;
-        var display = document.querySelector('#countdown');
-        startTimer(twelveHours, display);
+        startTimer(60 * 60 * 12, document.querySelector('#countdown'));
     };
 
-    // Price Update
-    const shippingSelect = document.getElementById('shippingSelect');
+    // Package Selection and Price Update
+    let productPrice = 450;
+    const prodPriceDisp = document.getElementById('prodPriceDisp');
     const chargeDisp = document.getElementById('chargeDisp');
     const totalDisp = document.getElementById('totalDisp');
-    const productPrice = 450;
+    const shippingSelect = document.getElementById('shippingSelect');
 
-    shippingSelect.addEventListener('change', function() {
-        const charge = parseInt(this.value);
-        chargeDisp.innerText = charge + ' টাকা';
-        totalDisp.innerText = (productPrice + charge) + ' টাকা';
-    });
+    function selectPkg(element, price) {
+        // UI change
+        document.querySelectorAll('.package-item').forEach(item => item.classList.remove('selected'));
+        element.classList.add('selected');
+        element.querySelector('input').checked = true;
+        
+        // Price change
+        productPrice = price;
+        prodPriceDisp.innerText = productPrice + ' টাকা';
+        updateTotal();
+    }
+
+    function updateTotal() {
+        const shipping = parseInt(shippingSelect.value);
+        chargeDisp.innerText = shipping + ' টাকা';
+        totalDisp.innerText = (productPrice + shipping) + ' টাকা';
+    }
+
+    shippingSelect.addEventListener('change', updateTotal);
 
     // Form Action
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyKP17e3bk6ndDR-AOn_ASfcPyMEd19QUns-pZWAL80ti6mRhZr6-V9Kpt0vFT6VrX55A/exec'; 
     const form = document.getElementById('googleSheetForm');
     const btn = document.getElementById('submitBtn');
-    const mainContent = document.getElementById('main-content');
-    const successPage = document.getElementById('success-page');
 
     form.addEventListener('submit', e => {
         e.preventDefault();
@@ -210,8 +249,8 @@
 
         fetch(scriptURL, { method: 'POST', body: finalData})
             .then(response => {
-                mainContent.style.display = 'none';
-                successPage.style.display = 'block';
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('success-page').style.display = 'block';
                 window.scrollTo(0,0);
             })
             .catch(error => {
