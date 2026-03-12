@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang='bn'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title>Easy Buy - ম্যাজিক কুলিং প্যাচ</title>
+    <link href='https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&amp;display=swap' rel='stylesheet'/>
+    <link href='https://unpkg.com/flickity@2/dist/flickity.min.css' rel='stylesheet'/>
+    <style>
+        :root { --primary: #00a884; --secondary: #ff9800; --dark: #333; }
+        body { font-family: 'Hind Siliguri', sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+        .main-wrapper { max-width: 600px; margin: auto; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        header { text-align: center; padding: 20px; border-bottom: 2px solid #eee; }
+        .logo { font-size: 30px; font-weight: 800; color: var(--primary); }
+        .logo span { color: var(--secondary); }
+        .headline { padding: 20px; text-align: center; font-size: 22px; font-weight: 700; line-height: 1.4; color: #111; }
+        .main-carousel { margin-bottom: 20px; }
+        .carousel-cell { width: 100%; height: auto; margin-right: 10px; }
+        .carousel-cell img { width: 100%; display: block; }
+        .section-title { background: var(--primary); color: #fff; padding: 10px; text-align: center; font-size: 20px; margin-top: 20px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px; border-radius: 10px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .benefit-card { background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px; border-left: 5px solid var(--primary); }
+        .benefit-card h4 { margin: 0 0 5px 0; color: var(--primary); }
+        .spec-table { width: 90%; margin: 20px auto; border-collapse: collapse; }
+        .spec-table td { border: 1px solid #ddd; padding: 10px; font-size: 14px; }
+        .checkout-area { padding: 20px; background: #fff; border-top: 5px solid var(--secondary); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .price-summary { background: #eee; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .row { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 5px; }
+        .confirm-btn { background: #28a745; color: #fff; border: none; width: 100%; padding: 18px; font-size: 20px; font-weight: 700; border-radius: 5px; cursor: pointer; }
+        #success-page { display: none; text-align: center; padding: 50px 20px; background: #fff; }
+        .success-icon { font-size: 80px; color: #28a745; }
+    </style>
+</head>
+<body>
+
+<div class='main-wrapper' id='main-content'>
+    <header><div class='logo'>Easy<span>Buy</span></div></header>
+
+    <div class='headline'>আপনার সোনামণির জ্বর বা প্রচণ্ড গরমে তাৎক্ষণিক আরাম পেতে ব্যবহার করুন এই ম্যাজিক কুলিং প্যাচ!</div>
+
+    <div class='main-carousel' data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": true }'>
+        <div class='carousel-cell'><img src='https://via.placeholder.com/600x400?text=Image+1'/></div>
+        <div class='carousel-cell'><img src='https://via.placeholder.com/600x400?text=Image+2'/></div>
+        <div class='carousel-cell'><img src='https://via.placeholder.com/600x400?text=Image+3'/></div>
+    </div>
+
+    <div class='section-title'>পণ্যটি কিভাবে কাজ করে ভিডিওতে দেখুন</div>
+    <div class='video-container'>
+        <iframe allowfullscreen='true' frameborder='0' src='https://www.youtube.com/embed/dQw4w9WgXcQ'></iframe>
+    </div>
+
+    <div class='section-title'>কেন এটি প্রতিটি ঘরে থাকা প্রয়োজন?</div>
+    <div class='benefit-card'>
+        <h4>✅ দ্রুত জ্বর ও ব্যথা উপশম</h4>
+        <p>জ্বর, তীব্র মাথা ব্যথা বা মাংসপেশির ব্যথায় এটি শরীরের তাপমাত্রা শুষে নিয়ে দ্রুত আরাম দেয়।</p>
+    </div>
+
+    <div class='section-title'>পণ্যের বিস্তারিত বিবরণ</div>
+    <table class='spec-table'>
+        <tr><td><b>পণ্যের নাম:</b></td><td>কুলিং প্যাচ সেট (৬ পিস)</td></tr>
+        <tr><td><b>কার্যকারিতা:</b></td><td>টানা ৮ ঘণ্টা পর্যন্ত শীতল রাখে</td></tr>
+        <tr><td><b>অফার মূল্য:</b></td><td>৪৯৯ টাকা (পূর্বমূল্য ৭৯৯ টাকা)</td></tr>
+    </table>
+
+    <div class='checkout-area' id='order-form'>
+        <h3 style='text-align: center;'>অর্ডার কনফার্ম করতে তথ্য দিন</h3>
+        <form id='googleSheetForm'>
+            <div class='form-group'>
+                <label>আপনার নাম *</label>
+                <input name='Name' placeholder='পুরো নাম লিখুন' required='true' type='text'/>
+            </div>
+            <div class='form-group'>
+                <label>মোবাইল নাম্বার *</label>
+                <input name='Phone' placeholder='১১ ডিজিটের নম্বর' required='true' type='tel'/>
+            </div>
+            <div class='form-group'>
+                <label>সম্পূর্ণ ঠিকানা *</label>
+                <input name='Address' placeholder='গ্রাম/রাস্তা, থানা, জেলা' required='true' type='text'/>
+            </div>
+            <div class='form-group'>
+                <label>ডেলিভারি এরিয়া *</label>
+                <select id='shippingSelect' name='Shipping'>
+                    <option value='80'>ঢাকার ভিতরে (৮০ টাকা)</option>
+                    <option value='110'>ঢাকার বাইরে (১১০ টাকা)</option>
+                </select>
+            </div>
+
+            <div class='price-summary'>
+                <div class='row'><span>প্রোডাক্টের দাম:</span> <span>৪৯৯ টাকা</span></div>
+                <div class='row'><span>ডেলিভারি চার্জ:</span> <span id='chargeDisp'>৮০ টাকা</span></div>
+                <hr/>
+                <div class='row' style='color:var(--primary); font-size: 18px;'>
+                    <span>সর্বমোট:</span> <span id='totalDisp'>৫৭৯ টাকা</span>
+                </div>
+            </div>
+
+            <button class='confirm-btn' id='submitBtn' type='submit'>অর্ডার কনফার্ম করুন</button>
+        </form>
+    </div>
+</div>
+
+<div class='main-wrapper' id='success-page'>
+    <div class='success-icon'>✔</div>
+    <h2>ধন্যবাদ! আপনার অর্ডারটি পেন্ডিং আছে।</h2>
+    <p style='font-size: 18px; padding: 10px;'>আমাদের প্রতিনিধি খুব শীঘ্রই আপনাকে কল করে অর্ডারটি কনফার্ম করবেন।</p>
+    <button onclick='location.reload()' style='padding: 10px 20px; cursor:pointer;'>আবার কিনুন</button>
+</div>
+
+<script src='https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js' type='text/javascript'></script>
+<script type='text/javascript'>
+//<![CDATA[
+    const shippingSelect = document.getElementById('shippingSelect');
+    const chargeDisp = document.getElementById('chargeDisp');
+    const totalDisp = document.getElementById('totalDisp');
+    const productPrice = 499;
+
+    shippingSelect.addEventListener('change', function() {
+        const charge = parseInt(this.value);
+        chargeDisp.innerText = charge + ' টাকা';
+        totalDisp.innerText = (productPrice + charge) + ' টাকা';
+    });
+
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL'; 
+    const form = document.getElementById('googleSheetForm');
+    const btn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "অর্ডার সাবমিট হচ্ছে...";
+        
+        let finalData = new FormData(form);
+        finalData.append('Total_Amount', (productPrice + parseInt(shippingSelect.value)));
+
+        fetch(scriptURL, { method: 'POST', body: finalData})
+            .then(response => {
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('success-page').style.display = 'block';
+                window.scrollTo(0,0);
+            })
+            .catch(error => {
+                alert("দুঃখিত, আবার চেষ্টা করুন!");
+                btn.disabled = false;
+                btn.innerText = "অর্ডার কনফার্ম করুন";
+            });
+    });
+//]]>
+</script>
+</body>
+</html>
+মিট হচ্ছে...";
+        
+        let finalData = new FormData(form);
+        finalData.append('Total_Amount', (productPrice + parseInt(shippingSelect.value)));
+
+        fetch(scriptURL, { method: 'POST', body: finalData})
+            .then(response => {
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('success-page').style.display = 'block';
+                window.scrollTo(0,0);
+            })
+            .catch(error => {
+                alert("দুঃখিত, আবার চেষ্টা করুন!");
+                btn.disabled = false;
+                btn.innerText = "অর্ডার কনফার্ম করুন";
+            });
+    });
+//]]>
+</script>
+
+</body>
+</html>
+    chargeDisp.innerText = charge + ' টাকা';
+        totalDisp.innerText = (productPrice + charge) + ' টাকা';
+    });
+
+    // গুগল শিটে ডাটা পাঠানো এবং পেজ পরিবর্তন লজিক
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
+    const form = document.getElementById('googleSheetForm');
+    const btn = document.getElementById('submitBtn');
+    const mainContent = document.getElementById('main-content');
+    const successPage = document.getElementById('success-page');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "অর্ডার সাবমিট হচ্ছে...";
+        
+        let finalData = new FormData(form);
+        finalData.append('Total_Amount', (productPrice + parseInt(shippingSelect.value)));
+
+        fetch(scriptURL, { method: 'POST', body: finalData})
+            .then(response => {
+                mainContent.style.display = 'none'; // মেইন পেজ লুকিয়ে ফেলা
+                successPage.style.display = 'block'; // ধন্যবাদ পেজ দেখানো
+                window.scrollTo(0,0);
+            })
+            .catch(error => {
+                alert("দুঃখিত, আবার চেষ্টা করুন!");
+                btn.disabled = false;
+                btn.innerText = "অর্ডার কনফার্ম করুন";
+            });
+    });
+</script>
+
+</body>
+</html>
